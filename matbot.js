@@ -74,7 +74,7 @@ app.use(express.static(__dirname + '/public'));
 // set the home page route
 app.get('/', (request, response) => {
     // ejs render automatically looks in the views folder
-    response.render('bot');
+    response.render('matbot');
 });
 
 app.listen(port, () => {
@@ -84,5 +84,5 @@ app.listen(port, () => {
 
 // pings server every 15 minutes to prevent dynos from sleeping
 setInterval(() => {
- http.get('http://nekods.herokuapp.com');
+ http.get('https://antimatbot.herokuapp.com/');
 }, 900000);
