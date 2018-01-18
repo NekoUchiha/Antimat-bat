@@ -1,6 +1,5 @@
 const Discord=require('discord.js');
 const robot = new Discord.Client();
-const TOKEN = "";
 const profanities =require('profanities');
 sintaxis = 'urf-8';
 
