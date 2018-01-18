@@ -55,4 +55,4 @@ robot.on('message', async msg => {
     }
 });
 
-robot.login(TOKEN);
+robot.login(process.env.TOKEN);
