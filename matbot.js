@@ -51,9 +51,13 @@ robot.on('message', async msg => {
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
             return;
         }
+    } 
+     if (msg.content.startsWith('гей')) {
+        msg.channel.send('Сама Такая')
+    }else if (msg.content.startsWith('пидор')) {
+        msg.channel.send('Сама Такая')
     }
 });
-
 robot.login(process.env.TOKEN);
 
 // Web app (Express + EJS)
