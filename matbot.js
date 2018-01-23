@@ -9,6 +9,7 @@ robot.on('error', console.error);
 
 robot.on('ready', () => { 
     console.log('Бот Готов')
+    robot.user.setGame("Анти Мат Фильтр")
 });
 
 robot.on('disconnect',() => console.log('бот отключается, непонятно почему, пробует переподключится'));
