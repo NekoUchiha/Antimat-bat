@@ -8,8 +8,10 @@ robot.on('warn', console.warn);
 robot.on('error', console.error);
 
 robot.on('ready', () => { 
+    client.channels.find("name", "log").send(`**Лог**: Функция **ready** - Бот заходит на **${client.user.username}**!`)
     console.log('Бот Готов')
     robot.user.setGame("Анти Мат Фильтр")
+    client.channels.find("name", "log").send(`**Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**`)
 });
 
 robot.on('disconnect',() => console.log('бот отключается, непонятно почему, пробует переподключится'));
