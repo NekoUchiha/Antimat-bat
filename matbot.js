@@ -8,7 +8,7 @@ robot.on('warn', console.warn);
 robot.on('error', console.error);
 
 robot.on('ready', () => { 
-    robot.channels.find("name", "log").send(`**Лог**: Функция **ready** - Бот заходит на **${client.user.username}**!`)
+    robot.channels.find("name", "log").send(`**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}**!`)
     console.log('Бот Готов')
     robot.user.setGame("Анти Мат Фильтр")
     robot.channels.find("name", "log").send(`**Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**`)
