@@ -3,12 +3,14 @@ const robot = new Discord.Client();
 const profanities =require('./profanities');
 sintaxis = 'urf-8';
 
+const LogChannale = robot.channels.find("id", "408879280206905344");
+
 robot.on('warn', console.warn);
 
 robot.on('error', console.error);
 
 robot.on('ready', () => { 
-    robot.channels.find("id", "408879280206905344").send(`**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}**!`)
+    LogChannale.send(`**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}**!`)
     console.log('Бот Готов')
     robot.user.setGame("Анти Мат Фильтр")
     robot.channels.find("id", "408879280206905344").send(`**Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**`)
