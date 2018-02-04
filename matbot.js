@@ -12,10 +12,10 @@ robot.on('ready', () => {
     console.log('Бот Готов')
     robot.user.setGame("Анти Мат Фильтр")
     console.log(`Автор бота = **Neko**
-                Версия Бота = 0.0.5`)
+                Версия Бота = 0.0.6`)
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**`)
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **Version** - Автор бота = **Neko**
-                Версия Бота = 0.0.5`)
+    Версия Бота = 0.0.6`)
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`-------------------------------------------------------------------`)
 });
 
