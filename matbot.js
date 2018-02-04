@@ -11,7 +11,11 @@ robot.on('ready', () => {
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}**!`)
     console.log('Бот Готов')
     robot.user.setGame("Анти Мат Фильтр")
+    console.log(`Автор бота = **Neko**
+                Версия Бота = 0.0.5`)
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**`)
+    robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **Version** - Автор бота = **Neko**
+                Версия Бота = 0.0.5`)
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`-------------------------------------------------------------------`)
 });
 
@@ -53,6 +57,7 @@ robot.on('message', async msg => {
             msg.delete();
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
+             robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - ${msg.author.username} ${msg} Удалено`);
             return;
         }
     } 
