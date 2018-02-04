@@ -57,7 +57,7 @@ robot.on('message', async msg => {
             msg.delete();
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
-             robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - ${msg.author.username} ${msg} Удалено`);
+             robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
             return;
         }
     } 
