@@ -11,7 +11,7 @@ robot.on('ready', () => {
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}**!`)
     console.log('Бот Готов')
     robot.user.setGame("Анти Мат Фильтр")
-    console.log(`Автор бота = **Neko**
+    console.log(`Автор бота = Neko
 Версия Бота = 0.0.6`)
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**`)
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **Version** - Автор бота = **Neko**
