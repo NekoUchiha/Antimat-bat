@@ -3,51 +3,51 @@ const robot = new Discord.Client();
 const profanities =require('./profanities');
 sintaxis = 'urf-8';
 
-robot.on('warn', console.warn);
+robot.on('warn', () => { 
+console.warn
+robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **warn** - ${warn}
+-------------------------------------------------------------------`);
+});
 
-robot.on('error', console.error);
+robot.on('error', () => { 
+console.error
+robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **error** - ${error}
+-------------------------------------------------------------------`); 
+});
 
 robot.on('ready', () => { 
-    robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}**!`)
-    console.log('Бот Готов')
-    robot.user.setGame("Анти Мат Фильтр")
-    console.log(`Автор бота = Neko
+    robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}**!
+**Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**
+**Лог**: Функция **Version** - Автор бота = **Neko**
+Версия Бота = 0.0.6
+-------------------------------------------------------------------`)
+    console.log(`Бот Готов
+присвоина игра Анти Мат Фильтр
+Автор бота = Neko
 Версия Бота = 0.0.6`)
-    robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**`)
-    robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **Version** - Автор бота = **Neko**
-Версия Бота = 0.0.6`)
-    robot.channels.find("id", process.env.LOG_CHANNALE).send(`-------------------------------------------------------------------`)
 });
 
-robot.on('disconnect',() => console.log('бот отключается, непонятно почему, пробует переподключится'));
-
-robot.on('reconnecting', () => console.log('бот Перезагружается'));
-
-
-robot.on("gulidMemberAdd", function(member) {
-    member.guild.channels.find("name", "general").sendMessage(member.toString() + "Вы попали на Сервер с Мат Фильтвом будте внимательны любой мат приведёт к Бану");
-
-    member.addRole(Проверка);
-
-    member.guild.createRole({
-        name: member.user.username,
-        colore: generateHex(),
-        permissions: []
-    }).then(function(role) {
-        member.addRole(role);
-    });
+robot.on('disconnect',() => {
+console.log('бот отключается, непонятно почему, пробует переподключится')
+robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **disconnect** - бот отключается, непонятно почему, пробует переподключится
+-------------------------------------------------------------------`);
 });
 
+robot.on('reconnecting', () => {
+console.log('бот Перезагружается')
+robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **reconnecting** - бот Перезагружается
+-------------------------------------------------------------------`);
+});
 
-robot.on('guildMemberAdd', (guild, member) => {
-    console.log(member.id);
-    if (banList.banned.includes(member.id)) {
-      guild.channels.get(config.channel).overwritePermissions(member, {
-        SEND_MESSAGES: false,
-      }).catch(console.log);
-    }
+// Create an event listener for new guild members
+robot.on('guildMemberAdd', member => {
+	// Send the message to a designated channel on a server:
+	const channel = member.guild.channels.find('name', 'chat');
+	// Do nothing if the channel wasn't found on this server
+	if (!channel) return;
+	// Send the message, mentioning the member
+	channel.send(`${member} Привет, Добро пожаловать на сервер, сервер находится под защитой Анти Мат Бота Любой мат Удаляется! Приятного Время провождения`);
   });
-
 
 robot.on('message', async msg => {
     if (msg.author.bot) return undefined;
