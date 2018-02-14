@@ -4,9 +4,9 @@ const profanities =require('./profanities');
 var RrRu = require('./profanities-ru.json');
 sintaxis = 'urf-8';
 
-const BotVersion = "0.0.9";
+const BotVersion = "0.0.10";
 
-const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "Пидора", "пидора", "Гей"];
+const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "Пидора", "пидора", "пидарок", "Пидарок", "Гей"];
 
 robot.on('warn', () => { 
 console.warn
@@ -76,7 +76,54 @@ robot.on('message', async msg => {
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
              robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
+	} else if(msg.content.startsWith("neko say")) {
+	msg.delete();
+		if (msg.author.id == process.env.owner_id)){
+			if (args[2] === undefined) return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
+				"description": "Ошибка синтаксита",
+				"color": 15337994,
+		}
+		});
+		if (args[3] === undefined) return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
+			"description": "Ошибка синтаксита",
+			"color": 15337994,
 	}
+	});
+	var msgSay = msg.cleanContent.replace(`neko say ${args[2]} ${args[3]}`, "");
+	let ForsceSay = args[3];
+	if (ForsceSay === "ev") return msg.guild.channels.find("name", args[2]).send("@everyone" + msgSay);
+	if (ForsceSay === "one") return msg.guild.channels.find("name", args[2]).send(msgSay);
+	if ( ForsceSay === "ev" || ForsceSay === "one") {
+
+	}
+	else {
+		robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
+			"description": "Ошибка синтаксита",
+			"color": 15337994,
+	}
+	});
+	}
+} else {robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
+	"description": "------------------------------------------------",
+	"color": 15337994,
+	"timestamp": new Date(),
+	"footer": {
+		"icon_url": robot.user.avatarURL,
+		"text": "© neko"
+	},
+	"thumbnail": {
+		"url": "https://raw.githubusercontent.com/NekoUchiha/neko-bot/master/img/dont.png"
+	},
+	"fields": [
+		{
+			"name": "У вас нет Доступа до этой Команды.",
+			"value": "------------------------------------------------"
+		},
+	],
+}
+}); return;}
+}
+});
 });
 robot.login(process.env.TOKEN);
 
