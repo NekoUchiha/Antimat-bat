@@ -78,7 +78,7 @@ robot.on('message', async msg => {
              robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
 	} else if(msg.content.startsWith("neko say")) {
 	msg.delete();
-		if (msg.author.id == process.env.owner_id)){
+		if (msg.author.id == process.env.owner_id){
 			if (args[2] === undefined) return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
 				"description": "Ошибка синтаксита",
 				"color": 15337994,
