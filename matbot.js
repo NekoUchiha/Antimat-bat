@@ -3,6 +3,10 @@ const robot = new Discord.Client();
 const profanities =require('./profanities');
 sintaxis = 'urf-8';
 
+const BotVersion = "0.0.7";
+
+const swearWords = ["гей", "пидор", "Пидор", "Гей"];
+
 robot.on('warn', () => { 
 console.warn
 robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **warn** - ${warn}
@@ -19,13 +23,13 @@ robot.on('ready', () => {
     robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}**!
 **Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**
 **Лог**: Функция **Version** - Автор бота = **Neko**
-Версия Бота = 0.0.6
+Версия Бота = **${BotVersion}**
 -------------------------------------------------------------------`)
 robot.user.setGame("Анти Мат Фильтр")
 console.log(`Бот Готов
 присвоина игра Анти Мат Фильтр
 Автор бота = Neko
-Версия Бота = 0.0.6`)
+Версия Бота = ${BotVersion}`)
 });
 
 robot.on('disconnect',() => {
@@ -50,6 +54,8 @@ robot.on('guildMemberAdd', member => {
 	channel.send(`${member} Привет, Добро пожаловать на сервер, сервер находится под защитой Анти Мат Бота Любой мат Удаляется! Приятного Время провождения`);
   });
 
+  
+  
 robot.on('message', async msg => {
     if (msg.author.bot) return undefined;
 
@@ -62,11 +68,14 @@ robot.on('message', async msg => {
             return;
         }
     } 
-     if (msg.content.startsWith('гей')) {
+     if( swearWords.some(word => msg.content.includes(word)) ) {
         msg.channel.send('Сама Такая')
-    }else if (msg.content.startsWith('пидор')) {
-        msg.channel.send('Сама Такая')
-    }
+    } else if( profanities.some(word => msg.content.includes(word)) ) {
+		            msg.delete();
+            msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
+            console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
+             robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
+	}
 });
 robot.login(process.env.TOKEN);
 
