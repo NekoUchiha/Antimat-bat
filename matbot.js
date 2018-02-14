@@ -60,6 +60,8 @@ robot.on('guildMemberAdd', member => {
 robot.on('message', async msg => {
     if (msg.author.bot) return undefined;
 
+	const args = msg.content.split(' ');
+	
     for (x = 0; x < profanities.length; x++) {
         if(msg.content.toUpperCase() == profanities[x].toUpperCase()) {
             msg.delete();
