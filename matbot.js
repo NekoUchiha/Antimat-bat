@@ -124,7 +124,6 @@ robot.on('message', async msg => {
 }); return;}
 }
 });
-});
 robot.login(process.env.TOKEN);
 
 // Web app (Express + EJS)
