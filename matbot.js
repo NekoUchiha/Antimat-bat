@@ -1,7 +1,7 @@
 const Discord=require('discord.js');
 const robot = new Discord.Client();
 const profanities =require('./profanities');
-const profanities-ru =require('./profanities-ru');
+var profanities-ru = require('./profanities-ru.json');
 sintaxis = 'urf-8';
 
 const BotVersion = "0.0.8";
