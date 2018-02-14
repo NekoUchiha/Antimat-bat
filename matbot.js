@@ -4,7 +4,7 @@ const profanities =require('./profanities');
 const profanities-ru =require('./profanities-ru');
 sintaxis = 'urf-8';
 
-const BotVersion = "0.0.7";
+const BotVersion = "0.0.8";
 
 const swearWords = ["гей", "пидор", "Пидор", "Гей"];
 
