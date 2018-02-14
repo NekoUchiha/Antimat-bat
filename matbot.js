@@ -4,9 +4,9 @@ const profanities =require('./profanities');
 var RrRu = require('./profanities-ru.json');
 sintaxis = 'urf-8';
 
-const BotVersion = "0.0.8";
+const BotVersion = "0.0.9";
 
-const swearWords = ["гей", "пидор", "Пидор", "Гей"];
+const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "Пидора", "пидора", "Гей"];
 
 robot.on('warn', () => { 
 console.warn
