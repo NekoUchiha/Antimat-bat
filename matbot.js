@@ -1,6 +1,7 @@
 const Discord=require('discord.js');
 const robot = new Discord.Client();
 const profanities =require('./profanities');
+const profanities-ru =require('./profanities-ru');
 sintaxis = 'urf-8';
 
 const BotVersion = "0.0.7";
@@ -70,7 +71,7 @@ robot.on('message', async msg => {
     } 
      if( swearWords.some(word => msg.content.includes(word)) ) {
         msg.channel.send('Сама Такая')
-    } else if( profanities.some(word => msg.content.includes(word)) ) {
+    } else if( profanities-ru.some(word => msg.content.includes(word)) ) {
 		            msg.delete();
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
