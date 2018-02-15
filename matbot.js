@@ -3,8 +3,11 @@ const robot = new Discord.Client();
 const profanities =require('./profanities');
 var RrRu = require('./profanities-ru.json');
 sintaxis = 'urf-8';
+const fs = require("fs");
 
-const BotVersion = "0.0.10";
+const comBD = require('./data/comBD.json', 'utf8');
+
+const BotVersion = "0.0.11";
 
 const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "Пидора", "пидора", "пидарок", "Пидарок", "Гей"];
 
@@ -80,6 +83,11 @@ robot.on('message', async msg => {
              robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
 	} else if(msg.content.startsWith("neko say")) {
 	msg.delete();
+	if (comBD.COMMAND_ACCES === "no") return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
+				"description": "Команда Say выключена",
+				"color": 15337994,
+		}
+		});
 		if (msg.author.id == process.env.owner_id){
 			if (args[2] === undefined) return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
 				"description": "Ошибка синтаксита",
@@ -124,6 +132,31 @@ robot.on('message', async msg => {
 	],
 }
 }); return;}
+} else if (msg.content.startsWith("neko aces")) {
+	if  (msg.author.id == settings.owner_id) {
+		let newAces = args[2];
+		comBD.COMMAND_ACCES = newAces;
+		fs.writeFile("./data/comBD.json", JSON.stringify(comBD), (error) => console.error);
+	} else {
+	msg.channel.send({embed: {
+		"description": "------------------------------------------------",
+		"color": 15337994,
+		"timestamp": new Date(),
+		"footer": {
+			"icon_url": client.user.avatarURL,
+			"text": "© neko"
+		},
+		"thumbnail": {
+			"url": "https://raw.githubusercontent.com/NekoUchiha/neko-bot/master/img/dont.png"
+		},
+		"fields": [
+			{
+				"name": "Gomennasai anata no tokken chīsa sugiru",
+				"value": "------------------------------------------------"
+			},
+		],
+}
+})}	
 }
 });
 robot.login(process.env.TOKEN);
