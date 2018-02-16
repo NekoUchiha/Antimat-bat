@@ -133,7 +133,7 @@ robot.on('message', async msg => {
 }
 }); return;}
 } else if (msg.content.startsWith("neko aces")) {
-	if  (msg.author.id == settings.owner_id) {
+	if  (msg.author.id == process.env.owner_id) {
 		let newAces = args[2];
 		comBD.COMMAND_ACCES = newAces;
 		fs.writeFile("./data/comBD.json", JSON.stringify(comBD), (error) => console.error);
