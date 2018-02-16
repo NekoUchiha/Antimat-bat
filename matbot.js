@@ -137,6 +137,11 @@ robot.on('message', async msg => {
 		let newAces = args[2];
 		comBD.COMMAND_ACCES = newAces;
 		fs.writeFile("./data/comBD.json", JSON.stringify(comBD), (error) => console.error);
+		if (comBD.COMMAND_ACCES === "no") return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
+				"description": "Изменение команды не произошло",
+				"color": 15337994,
+		}
+		});
 		robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
 			"description": `Изменение Акеса команды на ${args[2]}`,
 			"color": 15337994,
