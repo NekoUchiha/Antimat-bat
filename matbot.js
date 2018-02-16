@@ -156,7 +156,7 @@ robot.on('message', async msg => {
 		},
 		"fields": [
 			{
-				"name": "Gomennasai anata no tokken chīsa sugiru",
+				"name": "У вас нет Доступа до этой Команды.",
 				"value": "------------------------------------------------"
 			},
 		],
