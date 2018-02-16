@@ -7,7 +7,7 @@ const fs = require("fs");
 
 const comBD = require('./data/comBD.json', 'utf8');
 
-const BotVersion = "0.0.11";
+const BotVersion = "0.0.12";
 
 const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "Пидора", "пидора", "пидарок", "Пидарок", "Гей"];
 
@@ -137,13 +137,18 @@ robot.on('message', async msg => {
 		let newAces = args[2];
 		comBD.COMMAND_ACCES = newAces;
 		fs.writeFile("./data/comBD.json", JSON.stringify(comBD), (error) => console.error);
+		robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
+			"description": `Изменение Акеса команды на ${args[2]}`,
+			"color": 15337994,
+	}
+	});
 	} else {
 	msg.channel.send({embed: {
 		"description": "------------------------------------------------",
 		"color": 15337994,
 		"timestamp": new Date(),
 		"footer": {
-			"icon_url": client.user.avatarURL,
+			"icon_url": robot.user.avatarURL,
 			"text": "© neko"
 		},
 		"thumbnail": {
