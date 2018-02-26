@@ -2,12 +2,13 @@ const Discord=require('discord.js');
 const robot = new Discord.Client();
 const profanities =require('./profanities');
 var RrRu = require('./profanities-ru.json');
+const NoBadWords = require('./disabilet.json');
 sintaxis = 'urf-8';
 const fs = require("fs");
 
 const comBD = require('./data/comBD.json', 'utf8');
 
-const BotVersion = "0.0.13";
+const BotVersion = "0.0.14";
 
 const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "педик", "Педик", "Пидора", "проститука", "проституточка", "Проституточка", "проституток", "Проституток", "Проститука", "проституки", "Проституки", "задрот", "Задрот", "пидора", "пидарок", "Пидарок", "пидop", "Пидop", "Гей"];
 
@@ -95,6 +96,7 @@ robot.on('message', async msg => {
      if( swearWords.some(word => msg.content.includes(word)) ) {
         msg.channel.send('Сама Такая')
     } else if( RrRu.some(word => msg.content.includes(word)) ) {
+		if(NoBadWords.some(word => msg.content.includes(word)) ) return;
 		            msg.delete();
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
