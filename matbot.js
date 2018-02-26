@@ -8,7 +8,7 @@ const fs = require("fs");
 
 const comBD = require('./data/comBD.json', 'utf8');
 
-const BotVersion = "0.0.14";
+const BotVersion = "0.0.15";
 
 const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "педик", "Педик", "Пидора", "проститука", "проституточка", "Проституточка", "проституток", "Проституток", "Проститука", "проституки", "Проституки", "задрот", "Задрот", "пидора", "пидарок", "Пидарок", "пидop", "Пидop", "Гей"];
 
@@ -90,6 +90,7 @@ robot.on('message', async msg => {
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
              robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
+			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** - **${gild.name}** - **${msg.author.username}** - **${msg}**`);
             return;
         }
     } 
@@ -101,6 +102,7 @@ robot.on('message', async msg => {
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
              robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
+			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** - **${gild.name}** - **${msg.author.username}** - **${msg}**`);
 	} else if(msg.content.startsWith("neko say")) {
 	msg.delete();
 	if (comBD.COMMAND_ACCES === "no") return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
