@@ -12,11 +12,10 @@ const BotVersion = "0.0.16";
 
 const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "педик", "Педик", "Пидора", "проститука", "проституточка", "Проституточка", "проституток", "Проституток", "Проститука", "проституки", "Проституки", "задрот", "Задрот", "пидора", "пидарок", "Пидарок", "пидop", "Пидop", "Гей"];
 
- .then(res => {
-        RrRu.size = Number(res.headers['content-length'])
-        NRrRu.data = res.body
-resolve(RrRu)
- })
+
+const RrRu.size = Number(res.headers['content-length'])
+
+
 robot.on('warn', () => { 
 console.warn
 robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **warn** - ${warn}
