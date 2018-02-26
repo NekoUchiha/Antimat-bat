@@ -8,10 +8,15 @@ const fs = require("fs");
 
 const comBD = require('./data/comBD.json', 'utf8');
 
-const BotVersion = "0.0.15";
+const BotVersion = "0.0.16";
 
 const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "педик", "Педик", "Пидора", "проститука", "проституточка", "Проституточка", "проституток", "Проституток", "Проститука", "проституки", "Проституки", "задрот", "Задрот", "пидора", "пидарок", "Пидарок", "пидop", "Пидop", "Гей"];
 
+ .then(res => {
+        RrRu.size = Number(res.headers['content-length'])
+        NRrRu.data = res.body
+resolve(RrRu)
+ })
 robot.on('warn', () => { 
 console.warn
 robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **warn** - ${warn}
@@ -29,6 +34,7 @@ robot.on('ready', () => {
 **Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**
 **Лог**: Функция **Version** - Автор бота = **Neko**
 Версия Бота = **${BotVersion}**
+RrRu = **${RrRu.size}**
 -------------------------------------------------------------------`)
 robot.user.setGame("Анти Мат Фильтр")
 console.log(`Бот Готов
