@@ -90,7 +90,7 @@ robot.on('message', async msg => {
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
              robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
-			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** - **${gild.name}** - **${msg.author.username}** - **${msg}**`);
+			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** - **${guild.name}** - **${msg.author.username}** - **${msg}**`);
             return;
         }
     } 
@@ -102,7 +102,7 @@ robot.on('message', async msg => {
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
              robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
-			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** - **${gild.name}** - **${msg.author.username}** - **${msg}**`);
+			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** - **${guild.name}** - **${msg.author.username}** - **${msg}**`);
 	} else if(msg.content.startsWith("neko say")) {
 	msg.delete();
 	if (comBD.COMMAND_ACCES === "no") return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
