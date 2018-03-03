@@ -213,7 +213,7 @@ app.use(express.static(__dirname + '/public'));
 // set the home page route
 app.get('/', (request, response) => {
     // ejs render automatically looks in the views folder
-    response.render('Hello Worold');
+    response.render('Index.html');
 });
 
 app.listen(port, () => {
