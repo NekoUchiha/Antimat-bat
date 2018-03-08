@@ -8,7 +8,7 @@ const fs = require("fs");
 
 const comBD = require('./data/comBD.json', 'utf8');
 
-const BotVersion = "0.0.15";
+const BotVersion = "0.0.16";
 
 const swearWords = ["гей", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "педик", "Педик", "Пидора", "проститука", "проституточка", "Проституточка", "проституток", "Проституток", "Проститука", "проституки", "Проституки", "задрот", "Задрот", "пидора", "пидарок", "Пидарок", "пидop", "Пидop", "Гей"];
 
@@ -191,6 +191,14 @@ robot.on('message', async msg => {
 		],
 }
 })}	
+} else if (msg.content.startsWith("neko fild")) {
+	msg.delete();
+	msg.channel.send(`Дорогие Девочки Администрация БШа поздравляет Вас с 8 МАРТА`, {
+		files: [
+		  "./img/flover.jpg"
+		]
+	  })
+
 }
 });
 robot.login(process.env.TOKEN);
