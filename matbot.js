@@ -83,7 +83,7 @@ robot.on('guildMemberAdd', member => {
   });
 
 
- bot.on('guildMemberRemove', member => {
+ robot.on('guildMemberRemove', member => {
   const channel = member.guild.channels.find('name', 'chat');
   if (!channel) return;
   var textBaybay = [
