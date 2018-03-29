@@ -83,6 +83,28 @@ robot.on('guildMemberAdd', member => {
   });
 
 
+ bot.on('guildMemberRemove', member => {
+  const channel = member.guild.channels.find('name', 'chat');
+  if (!channel) return;
+  var textBaybay = [
+    `***${member.user.tag}*** Испугался Меня и вышел(`,
+    `***${member.user.tag}*** Покинул Сервер (наверно пошёл за рыбкой для меня :З)`,
+    `ой кто то по имени ***${member.user.tag}*** Решил убежать от меня, я всё ровно его найду!!!!`,
+    `***${member.user.tag}*** понял что он не исправим, решил здатся и ушел в неизвестность.`,
+    `***${member.user.tag}*** пришёл в ярость и ушел(наверно оО).`,
+    `***${member.user.tag}*** Покинул Сервер, Спасибо что воспользовались Системой Анти-Мата :З`,
+    `***${member.user.tag}*** Решил отсавить нас но, одному ему ведомой Причине`,
+    `***${member.user.tag}*** Ушел, Вернись мы всё простим!!!`,
+    `***${member.user.tag}*** не нашёл Себя у нас и нешил продолжить поиск в другом месте`,
+    `***${member.user.tag}*** Был слишком слаб, поэтому решил уйти`,
+    `***${member.user.tag}*** не нашёл слов и ушёл`,
+    `***${member.user.tag}*** отправился в далёкое путешествие`,
+    `***${member.user.tag}*** ушел... Бяка...`
+  ];
+  var rdED = Math.floor(Math.random()*textBaybay.length);
+  channel.send(`${textBaybay[rdED]}`)
+}); 
+  
   
   
 robot.on('message', async msg => {
