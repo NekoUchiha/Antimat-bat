@@ -29,8 +29,9 @@ robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функц
 });
 
 robot.on('ready', () => { 
-    robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}  [ID ${robot.user.id}]**!
-	**log**: Функция **ready** - Работает для **${robot.guilds.size} Серверов**!
+robot.channels.find("id", process.env.LOG_CHANNALE).send(`
+**Лог**: Функция **ready** - Бот заходит на **${robot.user.username}  [ID ${robot.user.id}]**!
+**log**: Функция **ready** - Работает для **${robot.guilds.size} Серверов**!
 **${robot.channels.size}** Каналов и **${robot.users.size}** Пользователей Подсчитано!
 **Лог**: Функция **set game** - присвоина игра **Анти Мат Фильтр**
 **Лог**: Функция **Version** - Автор бота = **Neko**
