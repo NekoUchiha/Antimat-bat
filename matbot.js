@@ -227,7 +227,7 @@ robot.on('message', async msg => {
 			"color": 15337994,
 	}
 	}).then(msg => msg.delete(3000));
-var GuildName = args[2]
+var GuildName = args[2];
 
 if	(GuildName === EC) return msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
 		files: [
