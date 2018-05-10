@@ -229,17 +229,17 @@ robot.on('message', async msg => {
 	}).then(msg => msg.delete(3000));
 var GuildName = args[2];
 
-if	(GuildName === EC) return msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
+if	(GuildName === "EC") return msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
 		files: [
 		  "./img/9maya.png"
 		]
 	  });
-if (GuildName === Ce) return msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
+if (GuildName === "Ce") return msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
 		files: [
 		  "./img/9maya2.png"
 		]
 	  });
-if (GuildName === all) {
+if (GuildName === "all") {
 	msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
 		files: [
 		  "./img/9maya3.png"
