@@ -222,12 +222,12 @@ robot.on('message', async msg => {
 })}	
 } else if (msg.content.startsWith("neko fild")) {
 	msg.delete();
-	if (args[3] === undefined) return msg.channel.send({embed: {
+	if (args[2] === undefined) return msg.channel.send({embed: {
 			"description": ":x: Ошибка синтаксита",
 			"color": 15337994,
 	}
 	}).then(msg => msg.delete(3000));
-var GuildName = args[3]
+var GuildName = args[2]
 
 if	(GuildName === EC) return msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
 		files: [
