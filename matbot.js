@@ -8,7 +8,7 @@ const fs = require("fs");
 
 const comBD = require('./data/comBD.json', 'utf8');
 
-const BotVersion = "0.0.20";
+const BotVersion = "0.0.21";
 
 const swearWords = ["гей", "гeй", "Гeй", "г е й", "Г е й", "геи", "Геи", "гeи", "Гeи", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "педик", "Педик", "Пидора", "проститука", "проституточка", "Проституточка", "проституток", "Проституток", "Проститука", "проституки", "Проституки", "задрот", "Задрот", "пидора", "пидарок", "Пидарок", "пидop", "Пидop", "педор", "Педор", "пeдор", "Пeдор", "пeдoр", "Пeдoр", "педоp", "Педоp", "пeдоp", "Пeдоp", "Пeдop", "пeдop", "Гей"];
 
@@ -222,11 +222,30 @@ robot.on('message', async msg => {
 })}	
 } else if (msg.content.startsWith("neko fild")) {
 	msg.delete();
-	msg.channel.send(`Дорогие Девочки Администрация БШа поздравляет Вас с 8 МАРТА`, {
+	if (args[3] === undefined) return message.channel.send({embed: {
+			"description": ":x: Ошибка синтаксита",
+			"color": 15337994,
+	}
+	}).then(msg => msg.delete(3000));
+var GuildName = args[3]
+
+if	(GuildName === EC) return msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
 		files: [
-		  "./img/flover.jpg"
+		  "./img/9maya.png"
 		]
-	  })
+	  });
+if (GuildName === Ce) return msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
+		files: [
+		  "./img/9maya2.png"
+		]
+	  });
+if (GuildName === all) {
+	msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${message.guild.name}** поздравляет вас хоть и с прошедшим но 9 Мая :D `, {
+		files: [
+		  "./img/9maya3.png"
+		]
+	  }); 
+}	  
 
 } else if ( sleepWords.some(word => msg.content.includes(word)) ) {
 	msg.channel.send('Быстро Спать! :bed:');
