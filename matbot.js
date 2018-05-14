@@ -8,7 +8,7 @@ const fs = require("fs");
 
 const comBD = require('./data/comBD.json', 'utf8');
 
-const BotVersion = "0.0.21";
+const BotVersion = "0.0.22";
 
 const swearWords = ["гей", "гeй", "Гeй", "г е й", "Г е й", "геи", "Геи", "гeи", "Гeи", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "педик", "Педик", "Пидора", "проститука", "проституточка", "Проституточка", "проституток", "Проституток", "Проститука", "проституки", "Проституки", "задрот", "Задрот", "пидора", "пидарок", "Пидарок", "пидop", "Пидop", "педор", "Педор", "пeдор", "Пeдор", "пeдoр", "Пeдoр", "педоp", "Педоp", "пeдоp", "Пeдоp", "Пeдop", "пeдop", "Гей"];
 
@@ -137,18 +137,18 @@ robot.on('message', async msg => {
 	} else if(msg.content.startsWith("neko say")) {
 	msg.delete();
 	if (comBD.COMMAND_ACCES === "no") return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
-				"description": "Команда Say выключена",
+				"description": ":x: Команда Say выключена",
 				"color": 15337994,
 		}
 		});
 		if (msg.author.id == process.env.owner_id){
 			if (args[2] === undefined) return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
-				"description": "Ошибка синтаксита",
+				"description": ":x: Ошибка синтаксита",
 				"color": 15337994,
 		}
 		});
 		if (args[3] === undefined) return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
-			"description": "Ошибка синтаксита",
+			"description": ":x: Ошибка синтаксита",
 			"color": 15337994,
 	}
 	});
@@ -161,7 +161,7 @@ robot.on('message', async msg => {
 	}
 	else {
 		robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
-			"description": "Ошибка синтаксита",
+			"description": ":x: Ошибка синтаксита",
 			"color": 15337994,
 	}
 	});
@@ -191,7 +191,7 @@ robot.on('message', async msg => {
 		comBD.COMMAND_ACCES = newAces;
 		fs.writeFile("./data/comBD.json", JSON.stringify(comBD), (error) => console.error);
 		if (comBD.COMMAND_ACCES === "no") return robot.channels.find("id", process.env.LOG_CHANNALE).send({embed: {
-				"description": "Изменение команды не произошло",
+				"description": ":x: Изменение команды не произошло",
 				"color": 15337994,
 		}
 		});
@@ -222,6 +222,7 @@ robot.on('message', async msg => {
 })}	
 } else if (msg.content.startsWith("neko fild")) {
 	msg.delete();
+	if (msg.author.id == process.env.owner_id){
 	if (args[2] === undefined) return msg.channel.send({embed: {
 			"description": ":x: Ошибка синтаксита",
 			"color": 15337994,
@@ -245,7 +246,8 @@ if (GuildName === "all") {
 		  "./img/9maya3.png"
 		]
 	  }); 
-}	  
+	}	
+}  
 
 } else if ( sleepWords.some(word => msg.content.includes(word)) ) {
 	msg.channel.send('Быстро Спать! :bed:');
