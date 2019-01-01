@@ -248,7 +248,7 @@ if (GuildName === "all") {
 	  });
 if (GuildName === "ng") return msg.channel.send(`Дорогие Друзья Администрация Сервера(Дискорд) **${msg.guild.name}** поздравляет вас хоть и с Новым Годом и Желает всего самого наилучшего в этому Году `, {
 		files: [
-		  "./img/Kzng.png
+		  "./img/Kzng.png"
 		]
 	  });
 	}	
