@@ -251,7 +251,7 @@ if (GuildName === "all") {
 		  "./img/9maya3.png"
 		]
 	  });
-if (GuildName === "EC8M") return msg.channel.send(`Дорогие Девочки Администрация Сервера(Дискорд) **${msg.guild.name}** поздравляет вас с 8 Марта`, {
+if (GuildName === "8MEC") return msg.channel.send(`Дорогие Девочки Администрация Сервера(Дискорд) **${msg.guild.name}** поздравляет вас с 8 Марта`, {
 		files: [
 		  "./img/8mathecl.png"
 		]
