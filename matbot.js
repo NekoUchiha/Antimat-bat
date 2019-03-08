@@ -253,7 +253,7 @@ if (GuildName === "all") {
 	  });
 if (GuildName === "EC8") return msg.channel.send(`Дорогие Девочки Администрация Сервера(Дискорд) **${msg.guild.name}** поздравляет вас с 8 Марта`, {
 		files: [
-		  "./img/8mathecl.png""
+		  "./img/8mathecl.png"
 		]
 	  });
 	}	
