@@ -1,6 +1,5 @@
 const Discord=require('discord.js');
 const robot = new Discord.Client();
-const profanities =require('./profanities');
 var RrRu = require('./profanities-ru.json');
 const NoBadWords = require('./disabilet.json');
 sintaxis = 'urf-8';
@@ -8,13 +7,13 @@ const fs = require("fs");
 
 const comBD = require('./data/comBD.json', 'utf8');
 
-const BotVersion = "0.0.24";
+const BotVersion = "0.0.25";
 
-const swearWords = ["гей", "гeй", "Гeй", "г е й", "Г е й", "геи", "Геи", "гeи", "Гeи", "пидор", "Пидор", "Гея", "гея", "Пидоры", "пидоры", "педик", "Педик", "Пидора", "проститука", "проституточка", "Проституточка", "проституток", "Проституток", "Проститука", "проституки", "Проституки", "задрот", "Задрот", "пидора", "пидарок", "Пидарок", "пидop", "Пидop", "педор", "Педор", "пeдор", "Пeдор", "пeдoр", "Пeдoр", "педоp", "Педоp", "пeдоp", "Пeдоp", "Пeдop", "пeдop", "Гей"];
+const swearWords = ["гей", "г е й", "геи", "гeи", "пидор", "гея", "пидоры", "пидр", "педик", "пидора", "проститука", "проституточка", "проституток", "проституки", "задрот", "пидарок", "пидop", "педор"];
 
-const sleepWords =["не хочу спать", "Не хочу спать", "не хочу Спать", "Не Хочу Спать", "у меня безссоннится", "У меня безссоннится", "у Меня безссоннится", "у меня Безссоннится", "У Меня Безссоннится", "у меня бессонница", "у Меня бессонница", "у меня Бессонница", "У Меня Бессонница", "У меня бессонница", "не спится", "Не спится", "не Спится", "Не Спится", "не спишь", "Не спишь", "не Спишь", "Не Спишь", "сон для слабакоф", "сон для слабаков", "Сон для слабаков", "сон Для слабаков", "сон для Слабаков", "Сон Для Слабаков", "Сон для слабакоф"];
+const sleepWords =["не хочу спать", "у меня безссоннится", "у Меня безссоннится", "у меня бессонница", "не спится", "не спишь", "сон для слабакоф", "сон для слабаков"];
 
-const innovaWords =["Innova", "иннова", "Иннова", "инова", "Инова", "Inova", "inova", "innova"];
+const innovaWords =["иннова", "инова", "inova", "innova"];
 
 robot.on('warn', () => { 
 console.warn
@@ -115,20 +114,10 @@ robot.on('message', async msg => {
 
 	const args = msg.content.split(' ');
 	
-    for (x = 0; x < profanities.length; x++) {
-        if(msg.content.toUpperCase() == profanities[x].toUpperCase()) {
-            msg.delete();
-            msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
-            console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
-             robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
-			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** из Сервера **${msg.guild.name}[ID ${msg.guild.id}]** - в сообщении от - **${msg.author.username}** - **${msg}**`);
-            return;
-        }
-    } 
-     if( swearWords.some(word => msg.content.includes(word)) ) {
+     if( swearWords.some(word => msg.content.toLowerCase().includes(word)) ) {
         msg.channel.send('Сама Такая')
-    } else if( RrRu.some(word => msg.content.includes(word)) ) {
-		if(NoBadWords.some(word => msg.content.includes(word)) ) return;
+    } else if( RrRu.some(word => msg.content.toLowerCase().includes(word)) ) {
+		if(NoBadWords.some(word => msg.content.toLowerCase().includes(word)) ) return;
 		            msg.delete();
             msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
             console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
@@ -259,9 +248,9 @@ if (GuildName === "8MEC") return msg.channel.send(`Дорогие Девочки
 	}	
 }  
 
-} else if ( sleepWords.some(word => msg.content.includes(word)) ) {
+} else if ( sleepWords.some(word => msg.content.toLowerCase().includes(word)) ) {
 	msg.channel.send('Быстро Спать! :bed:');
-} else if ( innovaWords.some(word => msg.content.includes(word)) ) {
+} else if ( innovaWords.some(word => msg.content.toLowerCase().includes(word)) ) {
 	msg.channel.send('Innova - Disconnected people :scream_cat: ');
 }
 });
