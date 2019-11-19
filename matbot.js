@@ -257,7 +257,7 @@ if (GuildName === "8MEC") return msg.channel.send(`Дорогие Девочки
 
 
 robot.on('messageUpdate', async (oldMessage, newMessage) => {
-	if (newMessage === oldMessage) return undefined;
+	if (oldMessage.content === newMessage.content) return undefined;
     if (newMessage.author.bot) return undefined;
 	
      if( swearWords.some(word => newMessage.content.toLowerCase().includes(word)) ) {
