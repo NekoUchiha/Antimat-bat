@@ -256,24 +256,22 @@ if (GuildName === "8MEC") return msg.channel.send(`Дорогие Девочки
 });
 
 
-robot.on('messageUpdate', async msg, oldMessage, newMessage => {
-    if (msg.author.bot) return undefined;
-
-	const args = msg.content.split(' ');
+robot.on('messageUpdate', async (msg, oldMessage, newMessage) => {
+    if (newMessage.author.bot) return undefined;
 	
-     if( swearWords.some(word => msg.content.toLowerCase().includes(word)) ) {
+     if( swearWords.some(word => newMessage.content.toLowerCase().includes(word)) ) {
         msg.channel.send('Сама Такая')
-    } else if( RrRu.some(word => msg.content.toLowerCase().includes(word)) ) {
-		if(NoBadWords.some(word => msg.content.toLowerCase().includes(word)) ) return;
-		            msg.delete();
-            msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
-            console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
-             robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
-			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** из Сервера **${msg.guild.name}[ID ${msg.guild.id}]** - в сообщении от - **${msg.author.username}** - **${msg}**`);
-	} else if ( sleepWords.some(word => msg.content.toLowerCase().includes(word)) ) {
-	msg.channel.send('Быстро Спать! :bed:');
-} else if ( innovaWords.some(word => msg.content.toLowerCase().includes(word)) ) {
-	msg.channel.send('Innova - Disconnected people :scream_cat: ');
+    } else if( RrRu.some(word => newMessage.content.toLowerCase().includes(word)) ) {
+		if(NoBadWords.some(word => newMessage.content.toLowerCase().includes(word)) ) return;
+		            newMessage.delete();
+            newMessage.channel.send('**' + newMessage.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
+            console.log(newMessage.author.username + ' '+ newMessage + ' ' + 'Удалено');
+             robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${newMessage.author.username}** - **${newMessage}** Удалено`);
+			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** из Сервера **${newMessage.guild.name}[ID ${newMessage.guild.id}]** - в сообщении от - **${newMessage.author.username}** - **${newMessage}**`);
+	} else if ( sleepWords.some(word => newMessage.content.toLowerCase().includes(word)) ) {
+	newMessage.channel.send('Быстро Спать! :bed:');
+} else if ( innovaWords.some(word => newMessage.content.toLowerCase().includes(word)) ) {
+	newMessage.channel.send('Innova - Disconnected people :scream_cat: ');
 }
 });
 robot.login(process.env.TOKEN);
