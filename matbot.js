@@ -256,7 +256,7 @@ if (GuildName === "8MEC") return msg.channel.send(`Дорогие Девочки
 });
 
 
-robot.on('messageUpdate', async msg => {
+robot.on('messageUpdate', async msg, oldMessage, newMessage => {
     if (msg.author.bot) return undefined;
 
 	const args = msg.content.split(' ');
