@@ -254,6 +254,28 @@ if (GuildName === "8MEC") return msg.channel.send(`Дорогие Девочки
 	msg.channel.send('Innova - Disconnected people :scream_cat: ');
 }
 });
+
+
+robot.on('messageUpdate', async msg => {
+    if (msg.author.bot) return undefined;
+
+	const args = msg.content.split(' ');
+	
+     if( swearWords.some(word => msg.content.toLowerCase().includes(word)) ) {
+        msg.channel.send('Сама Такая')
+    } else if( RrRu.some(word => msg.content.toLowerCase().includes(word)) ) {
+		if(NoBadWords.some(word => msg.content.toLowerCase().includes(word)) ) return;
+		            msg.delete();
+            msg.channel.send('**' + msg.author.username + '** - Ай яй яй Нельзя Говорить Такие Слова')
+            console.log(msg.author.username + ' '+ msg + ' ' + 'Удалено');
+             robot.channels.find("id", process.env.LOG_CHANNALE).send(`**Лог**: Функция **delete Mat** - **${msg.author.username}** - **${msg}** Удалено`);
+			 robot.channels.find("id", process.env.DEL_MAT_CHANNALE).send(`**Удалён Мат** из Сервера **${msg.guild.name}[ID ${msg.guild.id}]** - в сообщении от - **${msg.author.username}** - **${msg}**`);
+	} else if ( sleepWords.some(word => msg.content.toLowerCase().includes(word)) ) {
+	msg.channel.send('Быстро Спать! :bed:');
+} else if ( innovaWords.some(word => msg.content.toLowerCase().includes(word)) ) {
+	msg.channel.send('Innova - Disconnected people :scream_cat: ');
+}
+});
 robot.login(process.env.TOKEN);
 
 // Web app (Express + EJS)
